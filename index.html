@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vishal — ICT Engineering Portfolio</title>
+  
+  <style>
+    /* ==========================================================================
+       UBER BASE DESIGN SYSTEM STYLES
+       ========================================================================== */
+    :root {
+      --black: #000000;
+      --carbon: #121212;
+      --gray-dark: #333333;
+      --gray-light: #f6f6f6;
+      --white: #ffffff;
+      --border: #e2e2e2;
+      --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: var(--font);
+    }
+
+    body {
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.6;
+    }
+
+    /* Header & Navigation */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.25rem 5%;
+      background: var(--black);
+      color: var(--white);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      font-weight: 300;
+      color: #a0a0a0;
+    }
+
+    .navbar nav {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .navbar nav a {
+      color: var(--white);
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 0.95rem;
+    }
+
+    .btn-pill {
+      background-color: var(--white);
+      color: var(--black) !important;
+      border: none;
+      padding: 0.6rem 1.25rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-pill:hover {
+      background-color: var(--gray-light);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 5rem 5% 4rem;
+      max-width: 900px;
+    }
+
+    .badge {
+      background: var(--gray-light);
+      padding: 0.4rem 0.8rem;
+      border-radius: 4px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero h1 {
+      font-size: 3.2rem;
+      font-weight: 800;
+      line-height: 1.15;
+      margin: 1.25rem 0 1rem;
+      letter-spacing: -1.5px;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      color: var(--gray-dark);
+      max-width: 680px;
+    }
+
+    /* Projects Section */
+    .projects-section {
+      padding: 4rem 5% 6rem;
+      background-color: var(--gray-light);
+      min-height: 60vh;
+      border-top: 1px solid var(--border);
+    }
+
+    .section-header {
+      margin-bottom: 2.5rem;
+    }
+
+    .section-header h2 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      color: #666;
+      font-size: 0.95rem;
+    }
+
+    /* Project Cards Grid */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--white);
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0,0,0,0.08);
+    }
+
+    /* Card Image Thumbnail */
+    .card-image-container {
+      width: 100%;
+      height: 190px;
+      overflow: hidden;
+      background-color: var(--carbon);
+      position: relative;
+    }
+
+    .card-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-image {
+      transform: scale(1.04);
+    }
+
+    .card-body {
+      padding: 1.5rem 1.5rem 1rem;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .card-category {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      color: #666;
+      font-weight: 700;
+      letter-spacing: 1px;
+      margin-bottom: 0.5rem;
+    }
+
+    .card h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      letter-spacing: -0.4px;
+    }
+
+    .card p {
+      color: var(--gray-dark);
+      font-size: 0.92rem;
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .tech-tag {
+      background: var(--gray-light);
+      padding: 0.3rem 0.65rem;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--carbon);
+    }
+
+    .card-footer {
+      padding: 1rem 1.5rem 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .btn-link {
+      background-color: var(--black);
+      color: var(--white);
+      text-decoration: none;
+      padding: 0.55rem 1.1rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      display: inline-block;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-link:hover {
+      background-color: var(--gray-dark);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2.5rem;
+      font-size: 0.88rem;
+      color: #666;
+      border-top: 1px solid var(--border);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="logo">Vishal<span>.ict</span></div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Work</a>
+      <a href="https://github.com" target="_blank" class="btn-pill">GitHub Profile</a>
+    </nav>
+  </header>
+
+  <!-- Hero Banner -->
+  <section id="about" class="hero">
+    <span class="badge">ICT Undergraduate</span>
+    <h1>Engineering clean software & scalable architectures.</h1>
+    <p>Welcome to my portfolio. I specialize in backend logic, algorithmic efficiency, and minimalist, high-contrast user interfaces.</p>
+  </section>
+
+  <!-- Projects Grid -->
+  <section id="projects" class="projects-section">
+    <div class="section-header">
+      <h2>Featured Projects</h2>
+      <p class="section-subtitle">Updated directly from repository data</p>
+    </div>
+    
+    <div id="projectGrid" class="grid"></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2026 Vishal. Built with Uber Base UI Design System principles.</p>
+  </footer>
+
+  <!-- ==========================================================================
+       JAVASCRIPT LOGIC & PROJECT DATA
+       ========================================================================== -->
+  <script>
+    // 🚨 UPDATE YOUR PROJECTS HERE IN THE FUTURE
+    const PROJECTS_DATA = [
+      {
+        title: "Autonomous Ride Matching Algorithm",
+        category: "Data Structures & Algorithms",
+        description: "Simulated a high-efficiency dispatch system using Dijkstra's algorithm for optimal routing in congested urban grids.",
+        tech: ["Python", "C++", "Graph Theory"],
+        githubUrl: "https://github.com",
+        // Fallback Unsplash image if local image path is not provided
+        image: "https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        title: "Real-time Vehicle Tracking Dashboard",
+        category: "Backend & WebSockets",
+        description: "Built a low-latency service to stream live GPS telemetry data from simulated vehicles directly to a responsive client interface.",
+        tech: ["JavaScript", "WebSockets", "REST API"],
+        githubUrl: "https://github.com",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=600&q=80"
+      },
+      {
+        title: "University Transport Tracker UI",
+        category: "Frontend & UI/UX",
+        description: "Designed a minimalist, accessible web interface for university students and staff to track campus shuttles in real-time.",
+        tech: ["HTML5", "CSS3", "JavaScript"],
+        githubUrl: "https://github.com",
+        image: "https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80"
+      }
+    ];
+
+    // Engine that builds project cards dynamically
+    function renderProjects() {
+      const grid = document.getElementById('projectGrid');
+      grid.innerHTML = '';
+
+      PROJECTS_DATA.forEach(project => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        
+        const techBadges = project.tech
+          .map(item => `<span class="tech-tag">${item}</span>`)
+          .join('');
+
+        card.innerHTML = `
+          <div class="card-image-container">
+            <img 
+              src="${project.image}" 
+              alt="${project.title}" 
+              class="card-image"
+              onerror="this.src='https://images.unsplash.com/photo-1555066931-4365d14bab8c?auto=format&fit=crop&w=600&q=80'"
+            />
+          </div>
+          <div class="card-body">
+            <div class="card-category">${project.category}</div>
+            <h3>${project.title}</h3>
+            <p>${project.description}</p>
+            <div class="tech-stack">${techBadges}</div>
+          </div>
+          <div class="card-footer">
+            <a href="${project.githubUrl}" target="_blank" class="btn-link">View Source Code &rarr;</a>
+          </div>
+        `;
+
+        grid.appendChild(card);
+      });
+    }
+
+    document.addEventListener('DOMContentLoaded', renderProjects);
+  </script>
+</body>
+</html>
